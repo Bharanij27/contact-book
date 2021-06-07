@@ -1,0 +1,20 @@
+<div class="contactform-wrapper">
+    Add Contacts to your book
+    <form [formGroup]="contactForm" class="form" (ngSubmit)="saveContact()">
+        <div formArrayName="friends">
+            <div *ngFor="let contact of friends.controls; let i = index">
+                <div class="card" [formGroupName]="i">
+                    <input type="text" formControlName="name" placeholder="Name">
+                    <input type="email" formControlName="emailId" placeholder="Email Id">
+                    <input type="text" formControlName="address" placeholder="Address">
+                    <input type="text" formControlName="phoneNum" placeholder="Phone Number">
+                    <button class="remove-contact" *ngIf="i > 0" (click)="removeData(i)">
+                        X
+                    </button>
+                </div>               
+            </div>
+        </div>
+        <button type="button" class="addContact" (click)="loadData()">+</button>
+        <button class="save" type="submit" [disabled]="!contactForm.valid">Save</button>
+    </form>   
+</div>

@@ -1,0 +1,70 @@
+@mixin card{
+    box-shadow:  0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    margin: 1rem;
+    position: relative;
+    padding: 1rem 0.5rem;
+    border-radius: 10px;
+}
+
+@mixin border {
+    border: none;
+    border-radius: 10px;
+}
+
+.contactform-wrapper{
+    @include card;
+
+    .addContact{
+        padding: 0.4rem 0.8rem;
+        background-color: #202335;
+        font-size: 1rem;
+        color: #f4f7ff;
+        cursor: pointer;
+        @include border;
+    }
+
+    input {
+        width: 40%;
+        padding: 12px 20px;
+        margin: 8px 4px;
+        display: inline-block;
+        border: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .card{
+          @include card;
+      }
+
+    .remove-contact{
+        display: block;
+        margin: auto;
+        background-color: #D70022;
+        border: none;
+        color: #fff;
+        padding: 0.4rem 0.6rem;
+        border-radius: 5px;
+        position: absolute;
+        top: 0.5rem;
+        right: 1.5rem;
+        cursor: pointer;
+    }
+
+    .save{
+        background-color: #00AE6D;
+        text-align: center;
+        padding: 0.8rem 1rem;
+        @include border;
+        color: #fff;
+        cursor: pointer;
+        margin-left: 20px;
+
+        &:disabled{
+            background-color: #ccc;
+            color: #202335;
+            cursor: not-allowed;
+        }
+    }
+}

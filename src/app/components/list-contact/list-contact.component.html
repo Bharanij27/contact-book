@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Phone No</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let contact of contacts; let i = index">
+            <td>{{contact.name}}</td>
+            <td>{{contact.address}}</td>
+            <td>{{contact.emailId}}</td>
+            <td>{{contact.phoneNum}}</td>
+        </tr>
+    </tbody>
+</table>
