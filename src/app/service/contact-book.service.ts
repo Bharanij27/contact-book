@@ -14,7 +14,6 @@ export class ContactBookService {
 
   addContact(newContacts : Contact[]) {
     this.contacts.push(...newContacts)
-    console.log(this.contacts);
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
   }
 

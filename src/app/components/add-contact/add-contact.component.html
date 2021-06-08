@@ -4,10 +4,39 @@
         <div formArrayName="friends">
             <div *ngFor="let contact of friends.controls; let i = index">
                 <div class="card" [formGroupName]="i">
-                    <input type="text" formControlName="name" placeholder="Name">
-                    <input type="email" formControlName="emailId" placeholder="Email Id">
-                    <input type="text" formControlName="address" placeholder="Address">
-                    <input type="text" formControlName="phoneNum" placeholder="Phone Number">
+                    <div class="child-container">
+                        <input type="text" formControlName="name" placeholder="Name">
+                        <span class="error" *ngIf="getContactsFormGroup(i).controls['name'].touched && getContactsFormGroup(i).controls['name'].hasError('required')">
+                            * This field is required
+                        </span>
+                        <span class="error" *ngIf="getContactsFormGroup(i).controls['name'].touched && getContactsFormGroup(i).controls['name'].hasError('minlength')">
+                            * Name should be minimum of length 3
+                        </span>
+                    </div>
+                    <div class="child-container">
+                        <input type="email" formControlName="emailId" placeholder="Email Id">
+                        <span class="error" *ngIf="getContactsFormGroup(i).controls['emailId'].touched && getContactsFormGroup(i).controls['emailId'].hasError('required')">
+                            * This field is required
+                        </span>
+                        <span class="error" *ngIf="getContactsFormGroup(i).controls['emailId'].touched && getContactsFormGroup(i).controls['emailId'].errors?.patternError">
+                            * Enter valid email id
+                        </span>
+                    </div>
+                    <div class="child-container">
+                        <input type="text" formControlName="address" placeholder="Address">
+                        <span class="error" *ngIf="getContactsFormGroup(i).controls['address'].touched && getContactsFormGroup(i).controls['address'].hasError('required')">
+                            * This field is required
+                        </span>
+                    </div>
+                    <div class="child-container">
+                        <input type="text" formControlName="phoneNum" placeholder="Phone Number">
+                        <span class="error" *ngIf="getContactsFormGroup(i).controls['phoneNum'].touched && getContactsFormGroup(i).controls['phoneNum'].hasError('required')">
+                            * This field is required
+                        </span>
+                        <span class="error" *ngIf="getContactsFormGroup(i).controls['phoneNum'].touched && getContactsFormGroup(i).controls['phoneNum'].errors?.pattern">
+                            * Enter valid phone number (+91XXXXXXXXXX)
+                        </span>
+                    </div>
                     <button class="remove-contact" *ngIf="i > 0" (click)="removeData(i)">
                         X
                     </button>
